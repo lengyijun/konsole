@@ -546,7 +546,12 @@ void EditProfileDialog::setupTabsPage(const Profile::Ptr &profile)
     connect(_tabsUi->renameTabWidget, &Konsole::RenameTabWidget::tabColorChanged, this,
             &Konsole::EditProfileDialog::tabColorChanged);
 
-    // tab monitoring
+    // Tab (Session) monitoring
+    _tabsUi->monitorSessionSilenceCheckBox->setChecked(profile->monitorSessionSilence());
+    connect(_tabsUi->monitorSessionSilenceCheckBox, &QCheckBox::stateChanged, this, [this](int state) {
+        updateTempProfileProperty(Profile::MonitorSessionSilence, state == Qt::Checked);
+    });
+
     const int silenceSeconds = profile->silenceSeconds();
     _tabsUi->silenceSecondsSpinner->setValue(silenceSeconds);
     auto suffix = ki18ncp("Unit of time", " second", " seconds");

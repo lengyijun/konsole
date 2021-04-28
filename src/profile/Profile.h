@@ -266,6 +266,8 @@ public:
          * directory as the currently active session.
          */
         StartInCurrentSessionDir,
+        /** (bool) Whether to monitor sessions for continuous silence. */
+        MonitorSessionSilence,
         /** (int) Specifies the threshold of detected silence in seconds. */
         SilenceSeconds,
         /** (BellModeEnum) Specifies the behavior of bell.
@@ -672,6 +674,12 @@ public:
     bool startInCurrentSessionDir() const
     {
         return property<bool>(Profile::StartInCurrentSessionDir);
+    }
+
+    /** Convenience method for property<QString>(Profile::MonitorSessionSilence) */
+    bool monitorSessionSilence() const
+    {
+        return property<bool>(Profile::MonitorSessionSilence);
     }
 
     /** Convenience method for property<QString>(Profile::SilenceSeconds) */

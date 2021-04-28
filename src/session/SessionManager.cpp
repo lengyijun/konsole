@@ -284,6 +284,9 @@ void SessionManager::applyProfile(Session *session, const Profile::Ptr &profile,
     }
 
     // Monitor Silence
+    if (apply.shouldApply(Profile::MonitorSessionSilence)) {
+        session->setMonitorSilence(profile->monitorSessionSilence());
+    }
     if (apply.shouldApply(Profile::SilenceSeconds)) {
         session->setMonitorSilenceSeconds(profile->silenceSeconds());
     }
