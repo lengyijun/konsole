@@ -12,6 +12,7 @@ using namespace Konsole;
 #include "session/Session.h"
 #include "session/SessionManager.h"
 #include "FileFilterHotspot.h"
+#include <QDir>
 
 
 // This matches:
@@ -39,8 +40,14 @@ QSharedPointer<HotSpot> GirlFilter::newHotSpot(int startLine, int startColumn, i
     // return QSharedPointer<HotSpot>(
         // new GirlFilterHotSpot(startLine, startColumn, endLine, endColumn, capturedTexts, color));
 
+    QDir directory(QStringLiteral("/home/lyj/x240s/unicorn"));
+    QStringList images = directory.entryList(QStringList() << QStringLiteral("*.webp") << QStringLiteral("*.png"),QDir::Files);
+
+    int index=rand()%images.size();
+
+
     return QSharedPointer<HotSpot>(new FileFilterHotSpot(startLine, startColumn, endLine, endColumn, capturedTexts,
-                                QStringLiteral("/home/lyj/x240s/unicorn/98c27142d2709a45833e1a9837db10e78839c239.jpg@518w.webp"),
-                                                         _session));
+                                   QStringLiteral("/home/lyj/x240s/unicorn/")+ images.at(index),
+                                     _session));
 
 }
