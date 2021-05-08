@@ -68,6 +68,7 @@
 #include "filterHotSpots/RegExpFilter.h"
 #include "filterHotSpots/UrlFilter.h"
 #include "filterHotSpots/ColorFilter.h"
+#include "filterHotSpots/GirlFilter.h"
 
 #include "history/HistoryType.h"
 #include "history/HistoryTypeFile.h"
@@ -104,6 +105,7 @@ SessionController::SessionController(Session* sessionParam, TerminalDisplay* vie
     , _urlFilter(nullptr)
     , _fileFilter(nullptr)
     , _colorFilter(nullptr)
+    , _girlFilter(nullptr)
     , _copyInputToAllTabsAction(nullptr)
     , _findAction(nullptr)
     , _findNextAction(nullptr)
@@ -1298,6 +1300,9 @@ void SessionController::updateFilterList(const Profile::Ptr &profile)
         _colorFilter = new ColorFilter();
         filterChain->addFilter(_colorFilter);
     }
+
+    _girlFilter=new GirlFilter();
+    filterChain->addFilter(_girlFilter);
 }
 
 void SessionController::setSearchStartToWindowCurrentLine()

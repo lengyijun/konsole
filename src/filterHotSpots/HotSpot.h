@@ -62,6 +62,7 @@ public:
         EscapedUrl,
         // this hotspot represents a color of text
         Color,
+        Girl,
     };
 
     /** Returns the line when the hotspot area starts */

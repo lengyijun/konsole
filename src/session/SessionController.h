@@ -49,6 +49,7 @@ class SessionGroup;
 class TerminalDisplay;
 class UrlFilter;
 class ColorFilter;
+class GirlFilter;
 
 /**
  * Provides the menu actions to manipulate a single terminal session and view pair.
@@ -318,6 +319,7 @@ private:
     UrlFilter *_urlFilter;
     FileFilter *_fileFilter;
     ColorFilter *_colorFilter;
+    GirlFilter *_girlFilter;
 
     QAction *_copyInputToAllTabsAction;
 
