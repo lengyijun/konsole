@@ -1301,7 +1301,7 @@ void SessionController::updateFilterList(const Profile::Ptr &profile)
         filterChain->addFilter(_colorFilter);
     }
 
-    _girlFilter=new GirlFilter();
+    _girlFilter=new GirlFilter(session());
     filterChain->addFilter(_girlFilter);
 }
 

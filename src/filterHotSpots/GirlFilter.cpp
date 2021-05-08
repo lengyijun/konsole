@@ -8,7 +8,10 @@
 
 using namespace Konsole;
 
-#include "GirlFilterHotSpot.h"
+// #include "GirlFilterHotSpot.h"
+#include "session/Session.h"
+#include "session/SessionManager.h"
+#include "FileFilterHotspot.h"
 
 
 // This matches:
@@ -17,7 +20,8 @@ using namespace Konsole;
 const QRegularExpression GirlFilter::GirlRegExp(
     QStringLiteral("unicorn"));
 
-GirlFilter::GirlFilter()
+GirlFilter::GirlFilter(Session *session):
+    _session(session)
 {
     setRegExp(GirlRegExp);
 }
@@ -25,13 +29,18 @@ GirlFilter::GirlFilter()
 QSharedPointer<HotSpot> GirlFilter::newHotSpot(int startLine, int startColumn, int endLine,
                                                 int endColumn, const QStringList &capturedTexts)
 {
-    QColor color(255, 0, 0, 127);
 
-    // Make sure we've actually matched a color.
-    if (!color.isValid()) {
-        return nullptr;
-    }
+    // QColor color(255, 0, 0, 127);
 
-    return QSharedPointer<HotSpot>(
-        new GirlFilterHotSpot(startLine, startColumn, endLine, endColumn, capturedTexts, color));
+    // if (!color.isValid()) {
+        // return nullptr;
+    // }
+
+    // return QSharedPointer<HotSpot>(
+        // new GirlFilterHotSpot(startLine, startColumn, endLine, endColumn, capturedTexts, color));
+
+    return QSharedPointer<HotSpot>(new FileFilterHotSpot(startLine, startColumn, endLine, endColumn, capturedTexts,
+                                QStringLiteral("/home/lyj/x240s/unicorn/98c27142d2709a45833e1a9837db10e78839c239.jpg@518w.webp"),
+                                                         _session));
+
 }

@@ -14,13 +14,16 @@ namespace Konsole
     class GirlFilter : public RegExpFilter
     {
     public:
-        GirlFilter();
+        GirlFilter(Session *session);
 
         static const QRegularExpression GirlRegExp;
 
     protected:
         QSharedPointer<HotSpot> newHotSpot(int startLine, int startColumn, int endLine,
                                            int endColumn, const QStringList &capturedTexts) override;
+
+    private:
+        QPointer<Session> _session;
     };
 }
 
