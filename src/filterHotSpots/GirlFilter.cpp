@@ -39,14 +39,15 @@ QSharedPointer<HotSpot> GirlFilter::newHotSpot(int startLine, int startColumn, i
     // return QSharedPointer<HotSpot>(
         // new GirlFilterHotSpot(startLine, startColumn, endLine, endColumn, capturedTexts, color));
 
-    QDir directory(QStringLiteral("/home/lyj/x240s/unicorn"));
+    QString dir=QStringLiteral("/home/lyj/.local/unicorn/");
+    QDir directory(dir);
     QStringList images = directory.entryList(QStringList() << QStringLiteral("*.webp") << QStringLiteral("*.png"),QDir::Files);
 
     int index=rand()%images.size();
 
 
     return QSharedPointer<HotSpot>(new FileFilterHotSpot(startLine, startColumn, endLine, endColumn, capturedTexts,
-                                   QStringLiteral("/home/lyj/x240s/unicorn/")+ images.at(index),
+                                   dir+ images.at(index),
                                      _session));
 
 }
