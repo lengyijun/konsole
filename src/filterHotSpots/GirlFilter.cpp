@@ -8,7 +8,6 @@
 
 using namespace Konsole;
 
-// #include "GirlFilterHotSpot.h"
 #include "session/Session.h"
 #include "session/SessionManager.h"
 #include "FileFilterHotspot.h"

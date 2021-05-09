@@ -153,7 +153,6 @@ set(konsoleprivate_SRCS ${windowadaptors_SRCS}
                         filterHotSpots/ColorFilter.cpp
                         filterHotSpots/ColorFilterHotSpot.cpp
                         filterHotSpots/GirlFilter.cpp
-                        filterHotSpots/GirlFilterHotSpot.cpp
                         history/HistoryFile.cpp
                         history/HistoryScroll.cpp
                         history/HistoryScrollFile.cpp
