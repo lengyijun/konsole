@@ -18,7 +18,7 @@ using namespace Konsole;
 //   - an RGB-style string (e.g., #3e3, #feed) delimited by non-alphanumerics;
 //   - or, a sequence of ASCII characters (e.g., foobar, Aquamarine, TOMATO).
 const QRegularExpression GirlFilter::GirlRegExp(
-    QStringLiteral("unicorn"));
+    QStringLiteral("(spur|unicorn)"));
 
 GirlFilter::GirlFilter(Session *session):
     _session(session)
@@ -30,14 +30,11 @@ QSharedPointer<HotSpot> GirlFilter::newHotSpot(int startLine, int startColumn, i
                                                 int endColumn, const QStringList &capturedTexts)
 {
 
-    // QColor color(255, 0, 0, 127);
-
-    // if (!color.isValid()) {
-        // return nullptr;
-    // }
-
-    // return QSharedPointer<HotSpot>(
-        // new GirlFilterHotSpot(startLine, startColumn, endLine, endColumn, capturedTexts, color));
+    if(capturedTexts.at(0)==QStringLiteral("spur")){
+        return QSharedPointer<HotSpot>(new FileFilterHotSpot(startLine, startColumn, endLine, endColumn, capturedTexts,
+                                        QStringLiteral("/home/lyj/.local/spur.jpg"),
+                                         _session));
+    }
 
     QString dir=QStringLiteral("/home/lyj/.local/unicorn/");
     QDir directory(dir);
