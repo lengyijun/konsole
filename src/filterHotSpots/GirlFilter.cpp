@@ -36,7 +36,7 @@ QSharedPointer<HotSpot> GirlFilter::newHotSpot(int startLine, int startColumn, i
                                          _session));
     }
 
-    QString dir=QStringLiteral("/home/lyj/.local/unicorn/");
+    QString dir=QStringLiteral("/home/lyj/.local/unicorn/img/");
     QDir directory(dir);
     QStringList images = directory.entryList(QStringList() << QStringLiteral("*.webp") << QStringLiteral("*.png"),QDir::Files);
 
